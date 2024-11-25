@@ -56,6 +56,7 @@ namespace JSONConsoleApp
             {
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(Address));
                 serializer.WriteObject(stream, this);
+                stream.Position = 0;
                 using (StreamReader reader = new StreamReader(stream, Encoding.UTF8, true, 1024, true))
                 {
                     string json = reader.ReadToEnd();
