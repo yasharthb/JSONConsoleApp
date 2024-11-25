@@ -54,5 +54,16 @@ namespace TestProject
             Address address = new Address("123 Main St", "Springfield", "IL", "12345");
             Assert.IsFalse(address.Equals(null));
         }
+
+        [TestMethod]
+        public void SerializationDeserializationTest()
+        {
+            Address address1 = new Address("123 Main St", "Springfield", "IL", "12345");
+            string serialized = address1.ToJson();
+            Address address2 = Address.FromJson(serialized);
+
+            Assert.AreEqual(address1, address2);
+        }
+
     }
 }
